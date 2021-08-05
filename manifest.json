@@ -1,0 +1,32 @@
+{
+  "name": "blinkTwice",
+  "description": "Rest your eyes!",
+  "version": "1.0",
+  "manifest_version": 3, 
+  "background": {
+      "service_worker": "background.js"
+  }, 
+  "action": {
+      "default_icon" : {
+        "32" : "images/winkArtichoke.png"
+      }, 
+      "default_title": "blinkTwice",
+      "default_popup": "popup.html"
+    }, 
+  "permissions": [
+    "storage",
+    "activeTab", 
+    "tabs", 
+    "alarms", 
+    "<all_urls>", 
+    "scripting"
+  ], 
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+  
+}
+

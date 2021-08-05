@@ -1,0 +1,97 @@
+<!-- popup.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+    body {
+      font-family: "Open Sans";
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #popupContainer {
+      flex-direction: column;
+      height: 300px;
+      width: 250px;
+      background: tan;
+      border-radius: 8px;
+    }
+
+    #timerContainer {
+      flex-direction: row;
+      margin-bottom: 10px;
+    }
+
+    #timerContainer > * {
+      margin: 5px;
+    }
+
+    #timer {
+      align-items: center;
+      width: 80px;
+      height: 30px;
+      background-color: rgb(172, 127, 68);
+      font-size: 14pt;
+    }
+
+    #optionsContainer {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    #optionsTitle {
+      font-size: 10pt;
+      margin-bottom: 10px;
+    }
+
+    .option {
+      padding-left: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="popupContainer" class="container">
+
+    <div id="timerContainer" class="container">
+      <div id="timerTitle">blinkTwice! in:</div>
+      <div id="timer" class="container">20:00</div>
+    </div>
+
+    <div id="optionsContainer" class="container">
+      <div id="optionsTitle">What do you want reminders for?</div>
+      <div id="eyeOptionsContainer" class="container option">
+        <input type="checkbox" id="eyeOptionsBox">
+        <div id="eyeOptionsText" class="option">Rest your eyes!</div>
+      </div>
+      <div id="stretchOptionsContainer" class="container option">
+        <input type="checkbox" id="stretchOptionsBox">
+        <div id="stretchOptionsText" class="option">Stretch your body!</div>
+      </div>
+      <div id="waterOptionsContainer" class="container option">
+        <input type="checkbox" id="waterOptionsBox">
+        <div id="waterOptionsText" class="option">Hydration habits!</div>
+      </div>
+      <div id="exerciseOptionsContainer" class="container option">
+        <input type="checkbox" id="exerciseOptionsBox">
+        <div id="exerciseOptionsText" class="option">Exercise breaks!</div>
+      </div>
+    </div>
+
+    <div id="buttonsContainer" class="container">
+      <button type="button" id="onButton">On</button>
+      <button type="button" id="offButton">Off</button>
+    </div>
+
+  </div>
+<script type="application/javascript" src="background.js"></script>
+<!-- <script type="module" src="popup.js"></script> -->
+</body>
+</html>
