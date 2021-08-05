@@ -41,7 +41,7 @@ const createAlert = function() {
 
   const firstTip = document.createElement('div');
   firstTip.setAttribute("id", "tip1");
-  firstTip.setAttribute("style", "display:flex;flex-direction:row;justify-content:start;align-items:center;width:320px;height:50px;font-size:15px;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;");
+  firstTip.setAttribute("style", "display:flex;flex-direction:row;justify-content:start;align-items:center;width:330px;height:50px;font-size:15px;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;");
   const firstTipImg = document.createElement('img');
   console.log(firstTipImg);
   firstTipImg.setAttribute("src", wink);
@@ -53,7 +53,7 @@ const createAlert = function() {
 
   const secondTip = document.createElement('div');
   secondTip.setAttribute("id", "tip2");
-  secondTip.setAttribute("style", "display:flex;flex-direction:row;justify-content:start;align-items:center;width:320px;height:50px;font-size:15px;animation-duration:20s;animation-name:fadeIn;opacity:0;animation-delay:3s;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;");
+  secondTip.setAttribute("style", "display:flex;flex-direction:row;justify-content:start;align-items:center;width:330px;height:50px;font-size:15px;animation-duration:20s;animation-name:fadeIn;opacity:0;animation-delay:3s;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;");
   const secondTipImg = document.createElement('img');
   secondTipImg.setAttribute("src", wink);
   secondTipImg.setAttribute("style", "margin-right: 10px;");
@@ -65,7 +65,7 @@ const createAlert = function() {
 
   const thirdTip = document.createElement('div');
   thirdTip.setAttribute("id", "tip3");
-  thirdTip.setAttribute("style", "display:flex;flex-direction:row;justify-content:start;align-items:center;width:320px;height:50px;font-size:15px;animation-duration:20s;animation-name:fadeIn;opacity:0;animation-delay:6s;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;");
+  thirdTip.setAttribute("style", "display:flex;flex-direction:row;justify-content:start;align-items:center;width:330px;height:50px;font-size:15px;animation-duration:20s;animation-name:fadeIn;opacity:0;animation-delay:6s;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;");
   const thirdTipImg = document.createElement('img');
   thirdTipImg.setAttribute("src", wink);
   thirdTipImg.setAttribute("style", "margin-right: 10px;");
@@ -77,10 +77,11 @@ const createAlert = function() {
 
   const loadingBar = document.createElement('div');
   loadingBar.setAttribute("id", "loadingBar");
-  loadingBar.setAttribute("style", "display:flex;flex-direction:column;justify-content:start;align-items:center;width:350px;height:50px;font-size:14px;border:1px solid red;animation-duration:20s;animation-name:fadeIn;opacity:0;");
+  loadingBar.setAttribute("style", "display:flex;flex-direction:column;justify-content:center;align-items:center;width:350px;height:20px;font-size:14px;border:2px solid #e8d3c6;animation-duration:20s;animation-name:fadeIn;opacity:0;margin-top:18px;border-radius:10px;");
   const bar = document.createElement('div');
   bar.setAttribute("id", "bar");
-  bar.setAttribute("style", "display:flex;flex-direction:column;justify-content:start;align-items:center;width:350px;height:35px;font-size:14px;animation-duration:20s;animation-name:fadeIn;opacity:0;")
+  bar.setAttribute("style", "display:flex;flex-direction:column;justify-content:start;align-items:center;width:44px;height:18px;font-size:14px;animation-duration:20s;animation-name:fadeIn;opacity:0;border-radius:10px;background-color:#B7B7A4;");
+  loadingBar.appendChild(bar);
   /** function move() { 
    *  if (i === 0) {
    *    i = 1;
@@ -93,6 +94,14 @@ const createAlert = function() {
    *      } else {
    *        width++;
    *        elem.style.width = width + "%"}}}}} */
+  const lengthenBar = setInterval(function () {
+    bar.style.width = Number(bar.style.width.replace('px', '')) + 17 + 'px';
+  }, 1000);
+
+  setTimeout(function() {
+    clearInterval(lengthenBar)
+  }, 20000)
+
 
   newAlert.appendChild(firstTip);
   newAlert.appendChild(secondTip);
