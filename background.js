@@ -29,47 +29,72 @@
 
 chrome.runtime.onInstalled.addListener(() => {
   console.log("installed!");
-  // alarmClock.setup();
-  // chrome.scripting.executeScript({
-  //   file: 'popup.js'
+  chrome.alarms.get("blinkTwiceAlarm", function(alarm) {
+    if (alarm) {
+      chrome.alarms.clear("blinkTwiceAlarm", function() {
+        chrome.alarms.getAll();
+      }
+    )}
+    chrome.alarms.create("blinkTwiceAlarm", {delayInMinutes: 0.1, periodInMinutes: 0.1} );
+  })
+});
+
+chrome.alarms.onAlarm.addListener(function(tab) {
+  console.log("beep boop");
+
+  // chrome.windows.create({
+  //   "focused" : true,
+  //   "height" : 300, 
+  //   "width" : 500,
+  //   "left": 960,
+  //   "top" : 540,
+  //   "url" : "alert.html"
+  // })
+  // const tabId = getTabId();
+  // chrome.scripting.executeScript(
+  //   {
+  //     target : {tabId : tabId}, 
+  //     files : ['content.js']
+  //   }, 
+  //   () => {})
+  chrome.tabs.query({active: true, currentWindow: true}, function(tab) {
+    console.log("tab", tab)
+    console.log("tab[0]", tab[0])
+    console.log("tab[0].id", tab[0].id)
+    chrome.tabs.sendMessage(tab[0].id, {greeting: "BLINK"}, function(response) {
+      console.log("BEEPBEEPBEEP")
+      console.log("currentTab DOM:", response.dom)
+      // chrome.scripting.executeScript({
+      //   target : {tabId : tab[0].id}, 
+      //   files : ['content.js']
+      // })
+    });
+  })
+  // chrome.tabs.query({active: true, currentWindow: true}, function(tab) {
+  //   console.log("tab", tab)
+  //   console.log("tab[0]", tab[0])
+  //   console.log("tab[0].id", tab[0].id)
+  //   chrome.scripting.executeScript({
+  //     target : {tabId : tab[0].id}, 
+  //     files : ['content.js']
+  //   })
   // })
 });
 
-chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
-    if (request.message === 'buttonClicked') {
-      console.log("clickedON")
-      chrome.alarms.create("blinkTwiceAlarm", {delayInMinutes: 0.2, periodInMinutes: 1} );
-      window.close();
-      // sendResponse({farewell: "goodbye"});
-    }
-  }
-);
 
 
-chrome.alarms.onAlarm.addListener(function(tab) {
-  alert("asdfasdf");
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    chrome.tabs.sendMessage(tab.id, {greeting: "BLINK"}, function(response) {
-      console.log("BEEPBEEPBEEP")
-      console.log(response.dom)
-      // createBlinkTwice(response.dom);
-    });
-  });
-});
+// chrome.runtime.onMessage.addListener(
+  //   function(request, sender, sendResponse) {
+  //     if (request.message === 'buttonClicked') {
+  //       console.log("clickedON")
+  //       chrome.alarms.create("blinkTwiceAlarm", {delayInMinutes: 0.2, periodInMinutes: 1} );
+  //       window.close();
+  //       // sendResponse({farewell: "goodbye"});
+  //     }
+  //   }
+  // );
 
 //create pop up that displays three tasks given to complete with the given timer
 //examples of background script --> chrome.tabs.scripting.executeScript()
 // function createBlinkTwice(body) {
 //   const popUp = document.createElement('div');
-
-
-
-
-
-
-
-
-
-//   body.appendChild(popUp);
-// }
