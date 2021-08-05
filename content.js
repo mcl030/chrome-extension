@@ -63,7 +63,6 @@ addAnimation(`
     newAlert.appendChild(thirdTip)
   }, 6000)
 
-
   setTimeout(function() {
     body.removeChild(newAlert)
   }, 20000)
