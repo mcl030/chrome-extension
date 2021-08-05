@@ -26,7 +26,12 @@
       "matches": ["<all_urls>"],
       "js": ["content.js"]
     }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["images/winkArtichoke.png", "chrome-extension://fjogbopjckdajbkmjcenefgloeaboknc/images/winkArtichoke.png"], 
+      "matches": ["<all_urls>"]
+    }
   ]
-  
 }
 

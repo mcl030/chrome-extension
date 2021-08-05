@@ -27,7 +27,7 @@
 //   }
 // };
 
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onStartup.addListener(() => {
   console.log("installed!");
   chrome.alarms.get("blinkTwiceAlarm", function(alarm) {
     if (alarm) {

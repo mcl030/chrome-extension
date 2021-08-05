@@ -1,67 +1,106 @@
 const createAlert = function() {
   let dynamicStyles = null;
 
-function addAnimation(body) {
-  if (!dynamicStyles) {
-    dynamicStyles = document.createElement('style');
-    // dynamicStyles.type = 'text/css';
-    document.head.appendChild(dynamicStyles);
+  function addAnimation(body) {
+    if (!dynamicStyles) {
+      dynamicStyles = document.createElement('style');
+      // dynamicStyles.type = 'text/css';
+      document.head.appendChild(dynamicStyles);
+    }
+
+    dynamicStyles.sheet.insertRule(body, dynamicStyles.length);
   }
 
-  dynamicStyles.sheet.insertRule(body, dynamicStyles.length);
-}
+  addAnimation(`
+    @keyframes fadeIn { 
+      from {
+        opacity: 0;
+      }
 
-addAnimation(`
-  @keyframes fadeIn { 
-    from {
-      opacity: 0;
-    }
+      10% {
+        opacity: 1;
+      }
 
-    10% {
-      opacity: 1;
-    }
+      90% {
+        opacity: 1;
+      }
 
-    90% {
-      opacity: 1;
+      to {
+        opacity: 0;
+      }
     }
-
-    to {
-      opacity: 0;
-    }
-  }
-`);
+  `);
   
+  let wink = chrome.runtime.getURL('images/winkArtichoke.png');
 
   const body = document.querySelector("body");
   const newAlert = document.createElement('div');
   newAlert.setAttribute("id", "newAlert");
-  newAlert.setAttribute("style", "display:flex;flex-direction:column;justify-content:center;align-items:center;position:fixed;left:50%;top:50%;margin-top:-125px;margin-left:-200px;width:400px;height:250px;font-size:80px;border:1px solid red;animation-duration:20s;animation-name:fadeIn;opacity:0;");
+  newAlert.setAttribute("style", "display:flex;flex-direction:column;justify-content:center;align-items:center;position:fixed;left:50%;top:50%;margin-top:-125px;margin-left:-200px;width:400px;height:250px;font-size:80px;animation-duration:20s;animation-name:fadeIn;opacity:0;background-color:#F0EFEB;border-radius:8px;z-index:5;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;border:2px solid #f1e6e0");
+  // let image = require("images/winkArtichoke.png");
 
   const firstTip = document.createElement('div');
   firstTip.setAttribute("id", "tip1");
-  firstTip.setAttribute("style", "display:flex;flex-direction:column;justify-content:center;align-items:flex-start;width:300px;height:50px;font-size:32px;border:1px solid red;");
+  firstTip.setAttribute("style", "display:flex;flex-direction:row;justify-content:start;align-items:center;width:320px;height:50px;font-size:15px;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;");
+  const firstTipImg = document.createElement('img');
+  console.log(firstTipImg);
+  firstTipImg.setAttribute("src", wink);
+  firstTipImg.setAttribute("style", "margin-right: 10px;");
+  const firstTipTxt = document.createElement('div');
+  firstTipTxt.innerHTML = "Rest your eyes by looking in the distance!"
+  firstTip.appendChild(firstTipImg);
+  firstTip.appendChild(firstTipTxt);
 
   const secondTip = document.createElement('div');
   secondTip.setAttribute("id", "tip2");
-  secondTip.setAttribute("style", "display:flex;flex-direction:column;justify-content:center;align-items:flex-start;width:300px;height:50px;font-size:32px;border:1px solid red;animation-duration:20s;animation-name:fadeIn;opacity:0;");
-  
+  secondTip.setAttribute("style", "display:flex;flex-direction:row;justify-content:start;align-items:center;width:320px;height:50px;font-size:15px;animation-duration:20s;animation-name:fadeIn;opacity:0;animation-delay:3s;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;");
+  const secondTipImg = document.createElement('img');
+  secondTipImg.setAttribute("src", wink);
+  secondTipImg.setAttribute("style", "margin-right: 10px;");
+  const secondTipTxt = document.createElement('div');
+  secondTipTxt.innerHTML = "Stand up and stretch those bones!"
+  secondTip.appendChild(secondTipImg);
+  secondTip.appendChild(secondTipTxt);
+
 
   const thirdTip = document.createElement('div');
   thirdTip.setAttribute("id", "tip3");
-  thirdTip.setAttribute("style", "display:flex;flex-direction:column;justify-content:center;align-items:flex-start;width:300px;height:50px;font-size:32px;border:1px solid red;animation-duration:20s;animation-name:fadeIn;opacity:0;");
-  
+  thirdTip.setAttribute("style", "display:flex;flex-direction:row;justify-content:start;align-items:center;width:320px;height:50px;font-size:15px;animation-duration:20s;animation-name:fadeIn;opacity:0;animation-delay:6s;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;");
+  const thirdTipImg = document.createElement('img');
+  thirdTipImg.setAttribute("src", wink);
+  thirdTipImg.setAttribute("style", "margin-right: 10px;");
+  const thirdTipTxt = document.createElement('div');
+  thirdTipTxt.innerHTML = "Stay hydrated and take a sip!"
+  thirdTip.appendChild(thirdTipImg);
+  thirdTip.appendChild(thirdTipTxt);
+
+
+  const loadingBar = document.createElement('div');
+  loadingBar.setAttribute("id", "loadingBar");
+  loadingBar.setAttribute("style", "display:flex;flex-direction:column;justify-content:start;align-items:center;width:350px;height:50px;font-size:14px;border:1px solid red;animation-duration:20s;animation-name:fadeIn;opacity:0;");
+  const bar = document.createElement('div');
+  bar.setAttribute("id", "bar");
+  bar.setAttribute("style", "display:flex;flex-direction:column;justify-content:start;align-items:center;width:350px;height:35px;font-size:14px;animation-duration:20s;animation-name:fadeIn;opacity:0;")
+  /** function move() { 
+   *  if (i === 0) {
+   *    i = 1;
+   *  let elem = document.getElementId("bar");
+   *  let id = setInterval(frame, 10);
+   *    function frame() {
+   *      if (width >= ??) {
+   *        clearInterval(id);
+   *        i = 0;
+   *      } else {
+   *        width++;
+   *        elem.style.width = width + "%"}}}}} */
 
   newAlert.appendChild(firstTip);
-  
+  newAlert.appendChild(secondTip);
+  newAlert.appendChild(thirdTip);
+  newAlert.appendChild(loadingBar);
   body.appendChild(newAlert);
 
-  setTimeout(function() {
-    newAlert.appendChild(secondTip)
-  }, 3000)
-
-  setTimeout(function() {
-    newAlert.appendChild(thirdTip)
-  }, 6000)
+    
 
   setTimeout(function() {
     body.removeChild(newAlert)
