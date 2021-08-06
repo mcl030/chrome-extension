@@ -37,7 +37,7 @@ const createAlert = function() {
   const body = document.querySelector("body");
   const newAlert = document.createElement('div');
   newAlert.setAttribute("id", "newAlert");
-  newAlert.setAttribute("style", "display:flex;flex-direction:column;justify-content:center;align-items:center;position:fixed;left:50%;top:50%;margin-top:-125px;margin-left:-200px;width:400px;height:250px;font-size:80px;animation-duration:20s;animation-name:fadeIn;opacity:0;background-color:#F0EFEB;border-radius:8px;z-index:5;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;border:2px solid #f1e6e0");
+  newAlert.setAttribute("style", "display:flex;flex-direction:column;justify-content:center;align-items:center;position:fixed;left:50%;top:50%;margin-top:-125px;margin-left:-200px;width:400px;height:250px;font-size:80px;animation-duration:20s;animation-name:fadeIn;opacity:0;background-color:#F0EFEB;border-radius:8px;z-index:1000;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;border:2px solid #f1e6e0");
   // let image = require("images/winkArtichoke.png");
 
   const firstTip = document.createElement('div');
