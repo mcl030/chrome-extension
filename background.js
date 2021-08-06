@@ -35,7 +35,7 @@ chrome.runtime.onStartup.addListener(() => {
         chrome.alarms.getAll();
       }
     )}
-    chrome.alarms.create("blinkTwiceAlarm", {delayInMinutes: 0.1, periodInMinutes: 0.5} );
+    chrome.alarms.create("blinkTwiceAlarm", {delayInMinutes: 0.1, periodInMinutes: 0.4} );
   })
 });
 
