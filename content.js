@@ -1,4 +1,5 @@
 const createAlert = function() {
+
   let dynamicStyles = null;
 
   function addAnimation(body) {
@@ -62,7 +63,6 @@ const createAlert = function() {
   secondTip.appendChild(secondTipImg);
   secondTip.appendChild(secondTipTxt);
 
-
   const thirdTip = document.createElement('div');
   thirdTip.setAttribute("id", "tip3");
   thirdTip.setAttribute("style", "display:flex;flex-direction:row;justify-content:start;align-items:center;width:330px;height:50px;font-size:15px;animation-duration:20s;animation-name:fadeIn;opacity:0;animation-delay:7s;font-family:\"Segoe UI\";color:#CB997E;font-weight:500;");
@@ -74,13 +74,12 @@ const createAlert = function() {
   thirdTip.appendChild(thirdTipImg);
   thirdTip.appendChild(thirdTipTxt);
 
-
   const loadingBar = document.createElement('div');
   loadingBar.setAttribute("id", "loadingBar");
   loadingBar.setAttribute("style", "display:flex;flex-direction:column;justify-content:center;align-items:center;width:350px;height:20px;font-size:14px;border:2px solid #e8d3c6;animation-duration:20s;animation-name:fadeIn;opacity:0;margin-top:18px;border-radius:12px;");
   const bar = document.createElement('div');
   bar.setAttribute("id", "bar");
-  bar.setAttribute("style", "display:flex;flex-direction:column;justify-content:start;align-items:center;width:44px;height:18px;font-size:14px;animation-duration:20s;animation-name:fadeIn;opacity:0;border-radius:10px;background-color:#B7B7A4;");
+  bar.setAttribute("style", "display:flex;flex-direction:column;justify-content:start;align-items:center;width:42px;height:18px;font-size:14px;animation-duration:20s;animation-name:fadeIn;opacity:0;border-radius:10px;background-color:#B7B7A4;");
   loadingBar.appendChild(bar);
   /** function move() { 
    *  if (i === 0) {
@@ -102,14 +101,11 @@ const createAlert = function() {
     clearInterval(lengthenBar)
   }, 20000)
 
-
   newAlert.appendChild(firstTip);
   newAlert.appendChild(secondTip);
   newAlert.appendChild(thirdTip);
   newAlert.appendChild(loadingBar);
   body.appendChild(newAlert);
-
-  
 
   setTimeout(function() {
     if (newAlert) {
@@ -126,9 +122,6 @@ const createAlert = function() {
   })
 
 }
-
-
-
 
 
 chrome.runtime.onMessage.addListener(
